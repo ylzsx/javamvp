@@ -3,6 +3,7 @@ package com.example.java_mvp.network;
 import com.example.java_mvp.common.CacheKey;
 import com.example.java_mvp.common.Config;
 import com.example.java_mvp.network.converter.ResponseConverterFactory;
+import com.example.java_mvp.utils.CacheUtil;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -77,8 +78,7 @@ public class NetWorkFactory {
         return new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
-                // TODO: 解决token问题
-                String token = "6f73c517bca467ac2ed97d7f27d8bb2b";
+                String token = CacheUtil.getSP().getString(CacheKey.TOKEN, "");
                 //请求时加入token
                 Request request = chain.request().newBuilder()
                         .header(CacheKey.TOKEN, token)

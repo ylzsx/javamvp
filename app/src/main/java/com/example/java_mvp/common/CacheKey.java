@@ -8,7 +8,5 @@ package com.example.java_mvp.common;
 
 public class CacheKey {
 
-    public static final String FILE_NAME = "data";
-
     public static final String TOKEN = "token";
 }

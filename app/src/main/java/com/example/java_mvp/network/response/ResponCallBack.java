@@ -2,6 +2,8 @@ package com.example.java_mvp.network.response;
 
 import android.util.Log;
 
+import com.example.java_mvp.utils.ToastUtil;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,7 +41,7 @@ public abstract class ResponCallBack<T> implements Callback<T> {
             if (t instanceof ApiException) {
                 GlobalAPIErrorHandler.handler((ApiException) t);
             } else {
-                // "网络连接失败，请稍后再试"
+                ToastUtil.showToast("网络连接失败，请稍后再试");
             }
         }
     }
