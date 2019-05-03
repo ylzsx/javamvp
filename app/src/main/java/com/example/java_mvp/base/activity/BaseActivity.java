@@ -1,5 +1,6 @@
 package com.example.java_mvp.base.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -33,4 +34,25 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化view
      */
     protected abstract void initView();
+
+    /**
+     * 启动新活动
+     * @param newActivity
+     */
+    protected void startActivity(Class<?> newActivity) {
+        startActivity(newActivity, null);
+    }
+
+    /**
+     * 启动新活动（传输简单数据）
+     * @param newActivity
+     * @param bundle
+     */
+    protected void startActivity(Class<?> newActivity, Bundle bundle) {
+        Intent intent = new Intent(BaseActivity.this, newActivity);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
+    }
 }
